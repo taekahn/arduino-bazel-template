@@ -1,15 +1,31 @@
 # Use our custom-configured c++ toolchain.
-
-build:clang_config --crosstool_top=//toolchain:clang_suite
-
-# Use --cpu as a differentiator.
-
-build:clang_config --cpu=k8
+build:avr_config --crosstool_top=//toolchain:arduino_suite
+build:avr_config --cpu=arduino
 
 # Use the default Bazel C++ toolchain to build the tools used during the
 # build.
+build:avr_config --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
 
-build:clang_config --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+#MICROCONTROLLER DETAILS
+
+#CPU megahertz
+build --copt=-DF_CPU=16000000L
+
+build --copt=-DARDUINO=10819
+#board name
+build --copt=-DARDUINO_AVR_INDUSTRIAL101
+
+build --copt=-DARDUINO_ARCH_AVR
+
+build --copt=-DUSB_VID=0x2a03
+
+build --copt=-DUSB_PID=0x8056
+
+build --copt=-DUSB_MANUFACTURER="Unknown"
+
+build --copt=-DUSB_PRODUCT="Arduino Industrial 101"
+
+build --copt=-mmcu=atmega32u4
 
 # Pretty colors
  build --copt=-fdiagnostics-color
@@ -29,6 +45,13 @@ build:clang_config --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
  build --copt=-Wwrite-strings
  build --copt=-Wformat=2
  build --copt=-Wno-unknown-pragmas
+ build --copt=-flto
+ build --copt=-fno-exceptions
+ build --copt=-ffunction-sections
+ build --copt=-fdata-sections
+ build --copt=-fno-threadsafe-statics
+ build --copt=-Wno-error=narrowing
+ build --copt=-MMD
  build --cxxopt=-Wconversion-null
 
  # Set the version of C++ we support and use

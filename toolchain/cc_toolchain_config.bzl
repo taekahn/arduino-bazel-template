@@ -1,57 +1,59 @@
+load("@bazel_tools//tools/build_defs/cc:action_names.bzl", "ACTION_NAMES")
 load("@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl", "tool_path")
 
 def _impl(ctx):
-    tool_paths = [ # NEW
+    tool_paths = [
         tool_path(
             name = "gcc",
-            path = "F:/dev/clang/llvm-project/build/Debug/bin/clang",
+            path = "/usr/bin/avr-g++",
         ),
         tool_path(
             name = "ld",
-            path = "F:/dev/clang/llvm-project/build/Debug/bin/lld-link",
+            path = "/usr/bin/avr-ld",
         ),
         tool_path(
             name = "ar",
-            path = "/bin/false",
+            path = "/usr/bin/avr-ar",
         ),
         tool_path(
             name = "cpp",
-            path = "/bin/false",
+            path = "/usr/bin/avr-g++",
         ),
         tool_path(
             name = "gcov",
-            path = "/bin/false",
+            path = "/usr/bin/avr-gcov",
         ),
         tool_path(
             name = "nm",
-            path = "/bin/false",
+            path = "/usr/bin/avr-nm",
         ),
         tool_path(
             name = "objdump",
-            path = "/bin/false",
+            path = "/usr/bin/avr-objdump",
         ),
         tool_path(
             name = "strip",
-            path = "/bin/false",
+            path = "/usr/bin/avr-strip",
         ),
     ]
+
     return cc_common.create_cc_toolchain_config_info(
         ctx = ctx,
         toolchain_identifier = "local",
-         cxx_builtin_include_directories = [ # NEW
-                "F:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include",
-                "F:/dev/clang/llvm-project/build/Debug/lib/clang/14.0.0/include",
-                "F:/Windows Kits/10/Include/10.0.19041.0",
-                "F:/dev/clang/llvm-project/build/Debug/lib/clang/14.0.0/share",
-              ],
+        cxx_builtin_include_directories = [
+            "/usr/lib/avr/include",
+            "/usr/lib/gcc/avr/5.4.0/include",
+            "/usr/local/include",
+            "/usr/include",
+        ],
         host_system_name = "local",
         target_system_name = "local",
-        target_cpu = "k8",
+        target_cpu = "avr",
         target_libc = "unknown",
-        compiler = "clang",
+        compiler = "avr-g++",
         abi_version = "unknown",
         abi_libc_version = "unknown",
-        tool_paths = tool_paths, # NEW
+        tool_paths = tool_paths,
     )
 
 cc_toolchain_config = rule(

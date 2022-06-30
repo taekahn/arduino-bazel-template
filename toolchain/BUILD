@@ -3,18 +3,18 @@ load(":cc_toolchain_config.bzl", "cc_toolchain_config")
 package(default_visibility = ["//visibility:public"])
 
 cc_toolchain_suite(
-    name = "clang_suite",
+    name = "arduino_suite",
     toolchains = {
-        "k8": ":k8_toolchain",
+        "arduino": ":arduino_toolchain",
     },
 )
 
 filegroup(name = "empty")
 
 cc_toolchain(
-    name = "k8_toolchain",
-    toolchain_identifier = "k8-toolchain",
-    toolchain_config = ":k8_toolchain_config",
+    name = "arduino_toolchain",
+    toolchain_identifier = "arduino-toolchain",
+    toolchain_config = ":arduino_toolchain_config",
     all_files = ":empty",
     compiler_files = ":empty",
     dwp_files = ":empty",
@@ -24,5 +24,5 @@ cc_toolchain(
     supports_param_files = 0,
 )
 
-cc_toolchain_config(name = "k8_toolchain_config")
+cc_toolchain_config(name = "arduino_toolchain_config")
 
