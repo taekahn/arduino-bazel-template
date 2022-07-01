@@ -33,16 +33,8 @@
 
 .clwb/.idea/
 
-bazel-bin
-
-bazel-testlogs
+bazel-*
 
 .idea/
 
-bazel-out
-
-bazel-arduino-bazel-template
-
 .clwb/
-
-bazel-arduino_bazel

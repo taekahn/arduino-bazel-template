@@ -6,7 +6,6 @@ cc_library(
     srcs = ["cores/arduino/wiring_pulse.S"],
 )
 
-
 cc_library(
     name = "yun",
     srcs = ["variants/leonardo/pins_arduino.h"],

@@ -25,11 +25,6 @@ rules_cc_dependencies()
 
 rules_cc_toolchains()
 
-new_git_repository(
-    name = "arduino_core",
-    build_file = "//:arduino_core.BUILD",
-    commit = "bc792a9a716289249fa5f2f67be3ee8ba6507d6c",
-    patches = ["//patches:yun.patch"],
-    remote = "https://github.com/arduino/ArduinoCore-avr.git",
-    shallow_since = "1650377009 -0700",
-)
+load("//third_party:deps.bzl", "establish_cpp_deps")
+
+establish_cpp_deps()
