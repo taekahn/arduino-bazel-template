@@ -52,6 +52,7 @@ build --copt=-mmcu=atmega32u4
  build --copt=-fno-threadsafe-statics
  build --copt=-Wno-error=narrowing
  build --copt=-MMD
+ #look into -fno-fat-lto-object
  build --cxxopt=-Wconversion-null
 
  # Set the version of C++ we support and use

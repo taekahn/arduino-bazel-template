@@ -36,3 +36,9 @@
 bazel-bin
 
 bazel-testlogs
+
+.idea/
+
+bazel-out
+
+bazel-arduino-bazel-template

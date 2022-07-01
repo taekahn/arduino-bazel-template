@@ -1,0 +1,13 @@
+diff --git variants/yun/pins_arduino.h variants/yun/pins_arduino.h
+index 7fabb7f..2acb349 100644
+--- variants/yun/pins_arduino.h
++++ variants/yun/pins_arduino.h
+@@ -20,7 +20,7 @@
+   Boston, MA  02111-1307  USA
+ */
+ 
+-#include "../leonardo/pins_arduino.h"
++#include "variants/leonardo/pins_arduino.h"
+ 
+ // These serial port names are intended to allow libraries and architecture-neutral
+ // sketches to automatically default to the correct port name for a particular type
