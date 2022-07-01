@@ -42,3 +42,7 @@ bazel-testlogs
 bazel-out
 
 bazel-arduino-bazel-template
+
+.clwb/
+
+bazel-arduino_bazel
