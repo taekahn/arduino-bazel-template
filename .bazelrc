@@ -54,6 +54,10 @@ build --copt=-mmcu=atmega32u4
  build --copt=-MMD
  build --copt=-Wno-error=volatile
 
+ build --linkopt=-fuse-linker-plugin
+ build --linkopt=-lm
+ #build --linkopt=--gc-sections
+
  #TODO: DELETE THIS LATER. SHOULD NOT HIDE WARNINGS
  build --copt=-Wno-volatile
 
